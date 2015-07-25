@@ -27,6 +27,60 @@ namespace JeremyWorboys\PhpCountries;
 class Countries extends Database
 {
     /**
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     */
+    public function findByAlpha2($value = null)
+    {
+        return $this->findBy('alpha2', $value);
+    }
+
+    /**
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     */
+    public function findByAlpha3($value = null)
+    {
+        return $this->findBy('alpha3', $value);
+    }
+
+    /**
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     */
+    public function findByNumeric($value = null)
+    {
+        return $this->findBy('numeric', $value);
+    }
+
+    /**
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     */
+    public function findByOfficialName($value = null)
+    {
+        return $this->findBy('officialName', $value);
+    }
+
+    /**
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     */
+    public function findByCommonName($value = null)
+    {
+        return $this->findBy('commonName', $value);
+    }
+
+    /**
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     */
+    public function findByName($value = null)
+    {
+        return $this->findBy('name', $value);
+    }
+
+    /**
      * Get the path to the data file for this collection.
      *
      * @return string
