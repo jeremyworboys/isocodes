@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Countries
+ * PHP ISO Codes
  * Copyright (C) 2015 Jeremy Worboys <jw@jeremyworboys.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * USA
  */
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 /**
  * Languages
@@ -29,7 +29,7 @@ class Languages extends Database
     /**
      * Get all languages keyed by the iso6393Code field.
      *
-     * @return \JeremyWorboys\PhpCountries\Language[]
+     * @return \JeremyWorboys\IsoCodes\Language[]
      */
     public static function findAllByIso6393Code()
     {
@@ -40,7 +40,7 @@ class Languages extends Database
      * Get a language by its iso6393Code field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Language
+     * @return \JeremyWorboys\IsoCodes\Language
      */
     public static function findByIso6393Code($value)
     {
@@ -50,7 +50,7 @@ class Languages extends Database
     /**
      * Get all languages keyed by the iso6391Code field.
      *
-     * @return \JeremyWorboys\PhpCountries\Language[]
+     * @return \JeremyWorboys\IsoCodes\Language[]
      */
     public static function findAllByIso6391Code()
     {
@@ -61,7 +61,7 @@ class Languages extends Database
      * Get a language by its iso6391Code field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Language
+     * @return \JeremyWorboys\IsoCodes\Language
      */
     public static function findByIso6391Code($value)
     {
@@ -71,7 +71,7 @@ class Languages extends Database
     /**
      * Get all languages keyed by the iso6392TCode field.
      *
-     * @return \JeremyWorboys\PhpCountries\Language[]
+     * @return \JeremyWorboys\IsoCodes\Language[]
      */
     public static function findAllByIso6392TCode()
     {
@@ -82,7 +82,7 @@ class Languages extends Database
      * Get a language by its iso6392TCode field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Language
+     * @return \JeremyWorboys\IsoCodes\Language
      */
     public static function findByIso6392TCode($value)
     {
@@ -92,7 +92,7 @@ class Languages extends Database
     /**
      * Get all languages keyed by the name field.
      *
-     * @return \JeremyWorboys\PhpCountries\Language[]
+     * @return \JeremyWorboys\IsoCodes\Language[]
      */
     public static function findAllByName()
     {
@@ -103,7 +103,7 @@ class Languages extends Database
      * Get a language by its name field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Language
+     * @return \JeremyWorboys\IsoCodes\Language
      */
     public static function findByName($value)
     {
@@ -124,7 +124,7 @@ class Languages extends Database
      * Create a collection entry instance.
      *
      * @param array $fields
-     * @return \JeremyWorboys\PhpCountries\DatabaseEntry
+     * @return \JeremyWorboys\IsoCodes\DatabaseEntry
      */
     protected function createChildInstance(array $fields)
     {

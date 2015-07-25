@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Countries
+ * PHP ISO Codes
  * Copyright (C) 2015 Jeremy Worboys <jw@jeremyworboys.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * USA
  */
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 /**
  * Currencies
@@ -29,7 +29,7 @@ class Currencies extends Database
     /**
      * Get all currencies keyed by the letter field.
      *
-     * @return \JeremyWorboys\PhpCountries\Currency[]
+     * @return \JeremyWorboys\IsoCodes\Currency[]
      */
     public static function findAllByLetter()
     {
@@ -40,7 +40,7 @@ class Currencies extends Database
      * Get a currency by its letter field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Currency
+     * @return \JeremyWorboys\IsoCodes\Currency
      */
     public static function findByLetter($value)
     {
@@ -50,7 +50,7 @@ class Currencies extends Database
     /**
      * Get all currencies keyed by the numeric field.
      *
-     * @return \JeremyWorboys\PhpCountries\Currency[]
+     * @return \JeremyWorboys\IsoCodes\Currency[]
      */
     public static function findAllByNumeric()
     {
@@ -61,7 +61,7 @@ class Currencies extends Database
      * Get a currency by its numeric field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Currency
+     * @return \JeremyWorboys\IsoCodes\Currency
      */
     public static function findByNumeric($value)
     {
@@ -71,7 +71,7 @@ class Currencies extends Database
     /**
      * Get all currencies keyed by the name field.
      *
-     * @return \JeremyWorboys\PhpCountries\Currency[]
+     * @return \JeremyWorboys\IsoCodes\Currency[]
      */
     public static function findAllByName()
     {
@@ -82,7 +82,7 @@ class Currencies extends Database
      * Get a currency by its name field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Currency
+     * @return \JeremyWorboys\IsoCodes\Currency
      */
     public static function findByName($value)
     {
@@ -103,7 +103,7 @@ class Currencies extends Database
      * Create a collection entry instance.
      *
      * @param array $fields
-     * @return \JeremyWorboys\PhpCountries\Currency
+     * @return \JeremyWorboys\IsoCodes\Currency
      */
     protected function createChildInstance(array $fields)
     {

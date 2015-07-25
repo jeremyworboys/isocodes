@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class LanguageTest extends \PHPUnit_Framework_TestCase
 {
@@ -85,7 +85,7 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Language
+     * @return \JeremyWorboys\IsoCodes\Language
      */
     protected function getLanguage()
     {
@@ -104,7 +104,7 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Language
+     * @return \JeremyWorboys\IsoCodes\Language
      */
     protected function getLanguageWithInvertedName()
     {

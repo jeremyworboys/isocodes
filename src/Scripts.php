@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Countries
+ * PHP ISO Codes
  * Copyright (C) 2015 Jeremy Worboys <jw@jeremyworboys.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * USA
  */
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 /**
  * Scripts
@@ -29,7 +29,7 @@ class Scripts extends Database
     /**
      * Get all scripts keyed by the alpha4 field.
      *
-     * @return \JeremyWorboys\PhpCountries\Script[]
+     * @return \JeremyWorboys\IsoCodes\Script[]
      */
     public static function findAllByAlpha4()
     {
@@ -40,7 +40,7 @@ class Scripts extends Database
      * Get a script by its alpha4 field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Script
+     * @return \JeremyWorboys\IsoCodes\Script
      */
     public static function findByAlpha4($value)
     {
@@ -50,7 +50,7 @@ class Scripts extends Database
     /**
      * Get all scripts keyed by the numeric field.
      *
-     * @return \JeremyWorboys\PhpCountries\Script[]
+     * @return \JeremyWorboys\IsoCodes\Script[]
      */
     public static function findAllByNumeric()
     {
@@ -61,7 +61,7 @@ class Scripts extends Database
      * Get a script by its numeric field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Script
+     * @return \JeremyWorboys\IsoCodes\Script
      */
     public static function findByNumeric($value)
     {
@@ -71,7 +71,7 @@ class Scripts extends Database
     /**
      * Get all scripts keyed by the name field.
      *
-     * @return \JeremyWorboys\PhpCountries\Script[]
+     * @return \JeremyWorboys\IsoCodes\Script[]
      */
     public static function findAllByName()
     {
@@ -82,7 +82,7 @@ class Scripts extends Database
      * Get a script by its name field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Script
+     * @return \JeremyWorboys\IsoCodes\Script
      */
     public static function findByName($value)
     {
@@ -103,7 +103,7 @@ class Scripts extends Database
      * Create a collection entry instance.
      *
      * @param array $fields
-     * @return \JeremyWorboys\PhpCountries\DatabaseEntry
+     * @return \JeremyWorboys\IsoCodes\DatabaseEntry
      */
     protected function createChildInstance(array $fields)
     {

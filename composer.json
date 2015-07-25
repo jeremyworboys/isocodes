@@ -1,5 +1,5 @@
 {
-    "name": "jeremyworboys/phpcountries",
+    "name": "jeremyworboys/isocodes",
     "version": "1.0.0",
     "description": "Makes ISO databases from Debians pkg-isocodes available to PHP.",
     "keywords": [],
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "JeremyWorboys\\PhpCountries\\": "src/"
+            "JeremyWorboys\\IsoCodes\\": "src/"
         }
     },
     "scripts": {

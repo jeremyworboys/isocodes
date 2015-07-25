@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class CountriesTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $countries = Countries::sharedInstance();
 
-        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', iterator_to_array($countries));
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Country', iterator_to_array($countries));
     }
 
     /** @test */
@@ -53,7 +53,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
         $results = $countries->findAll();
 
         $this->assertInternalType('array', $results);
-        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', $results);
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Country', $results);
     }
 
     /** @test */
@@ -65,7 +65,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['AU']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $results['AU']);
     }
 
     /** @test */
@@ -91,7 +91,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $result = $countries->findBy('alpha2', 'AU');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Australia', $result->getName());
     }
 
@@ -126,7 +126,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['AU']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $results['AU']);
     }
 
     /** @test */
@@ -136,7 +136,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('USA', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['USA']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $results['USA']);
     }
 
     /** @test */
@@ -146,7 +146,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('076', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['076']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $results['076']);
     }
 
     /** @test */
@@ -156,7 +156,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Federal Republic of Germany', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Federal Republic of Germany']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $results['Federal Republic of Germany']);
     }
 
     /** @test */
@@ -166,7 +166,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Bolivia', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Bolivia']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $results['Bolivia']);
     }
 
     /** @test */
@@ -176,7 +176,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Denmark', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Denmark']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $results['Denmark']);
     }
 
     /** @test */
@@ -184,7 +184,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Countries::findByAlpha2('AU');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Australia', $result->getName());
     }
 
@@ -193,7 +193,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Countries::findByAlpha3('USA');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('United States', $result->getName());
     }
 
@@ -202,7 +202,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Countries::findByNumeric('076');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Brazil', $result->getName());
     }
 
@@ -211,7 +211,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Countries::findByOfficialName('Federal Republic of Germany');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Germany', $result->getName());
     }
 
@@ -220,7 +220,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Countries::findByCommonName('Bolivia');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Bolivia, Plurinational State of', $result->getName());
     }
 
@@ -229,7 +229,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Countries::findByName('Denmark');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Kingdom of Denmark', $result->getOfficialName());
     }
 }

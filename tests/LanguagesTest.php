@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class LanguagesTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     {
         $languages = Languages::sharedInstance();
 
-        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Language', iterator_to_array($languages));
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Language', iterator_to_array($languages));
     }
 
     /** @test */
@@ -27,7 +27,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('cnx', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $results['cnx']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $results['cnx']);
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('eo', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $results['eo']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $results['eo']);
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('enm', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $results['enm']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $results['enm']);
     }
 
     /** @test */
@@ -57,7 +57,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Latin', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $results['Latin']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $results['Latin']);
     }
 
     /** @test */
@@ -65,7 +65,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Languages::findByIso6393Code('cnx');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('Cornish, Middle', $result->getName());
     }
 
@@ -74,7 +74,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Languages::findByIso6391Code('eo');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('Esperanto', $result->getName());
     }
 
@@ -83,7 +83,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Languages::findByIso6392TCode('enm');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('English, Middle (1100-1500)', $result->getName());
     }
 
@@ -92,7 +92,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     {
         $result = Languages::findByName('Latin');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Language', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('lat', $result->getIso6393Code());
     }
 }

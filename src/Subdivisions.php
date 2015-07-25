@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Countries
+ * PHP ISO Codes
  * Copyright (C) 2015 Jeremy Worboys <jw@jeremyworboys.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * USA
  */
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 /**
  * Subdivisions
@@ -29,7 +29,7 @@ class Subdivisions extends Database
     /**
      * Get all subdivisions keyed by the code field.
      *
-     * @return \JeremyWorboys\PhpCountries\Subdivision[]
+     * @return \JeremyWorboys\IsoCodes\Subdivision[]
      */
     public static function findAllByCode()
     {
@@ -40,7 +40,7 @@ class Subdivisions extends Database
      * Get a subdivision by its code field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Subdivision
+     * @return \JeremyWorboys\IsoCodes\Subdivision
      */
     public static function findByCode($value)
     {
@@ -50,7 +50,7 @@ class Subdivisions extends Database
     /**
      * Get all subdivisions keyed by the countryCode field.
      *
-     * @return \JeremyWorboys\PhpCountries\Subdivision[][]
+     * @return \JeremyWorboys\IsoCodes\Subdivision[][]
      */
     public static function findAllByCountryCode()
     {
@@ -61,7 +61,7 @@ class Subdivisions extends Database
      * Get a subdivision by its countryCode field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Subdivision[]
+     * @return \JeremyWorboys\IsoCodes\Subdivision[]
      */
     public static function findByCountryCode($value)
     {
@@ -82,7 +82,7 @@ class Subdivisions extends Database
      * Create a collection entry instance.
      *
      * @param array $fields
-     * @return \JeremyWorboys\PhpCountries\DatabaseEntry
+     * @return \JeremyWorboys\IsoCodes\DatabaseEntry
      */
     protected function createChildInstance(array $fields)
     {

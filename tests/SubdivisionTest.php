@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class SubdivisionTest extends \PHPUnit_Framework_TestCase
 {
@@ -50,7 +50,7 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
         $subdivision = $this->getSubdivision();
         $parent = Subdivisions::findByCode('AL-01');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Subdivision', $subdivision->getParent());
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Subdivision', $subdivision->getParent());
         $this->assertSame($parent, $subdivision->getParent());
     }
 
@@ -68,12 +68,12 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
         $subdivision = $this->getSubdivision();
         $country = Countries::findByAlpha2('AL');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $subdivision->getCountry());
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $subdivision->getCountry());
         $this->assertSame($country, $subdivision->getCountry());
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Subdivision
+     * @return \JeremyWorboys\IsoCodes\Subdivision
      */
     protected function getSubdivision()
     {
@@ -87,7 +87,7 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Subdivision
+     * @return \JeremyWorboys\IsoCodes\Subdivision
      */
     protected function getSubdivisionWithoutParent()
     {

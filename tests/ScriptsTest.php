@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class ScriptsTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     {
         $scripts = Scripts::sharedInstance();
 
-        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Script', iterator_to_array($scripts));
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Script', iterator_to_array($scripts));
     }
 
     /** @test */
@@ -27,7 +27,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Hrkt', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Script', $results['Hrkt']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $results['Hrkt']);
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('140', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Script', $results['140']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $results['140']);
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Latin', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Script', $results['Latin']);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $results['Latin']);
     }
 
     /** @test */
@@ -55,7 +55,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     {
         $result = Scripts::findByAlpha4('Hrkt');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Script', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $result);
         $this->assertEquals('Japanese syllabaries (alias for Hiragana + Katakana)', $result->getName());
     }
 
@@ -64,7 +64,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     {
         $result = Scripts::findByNumeric('140');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Script', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $result);
         $this->assertEquals('Mandaic, Mandaean', $result->getName());
     }
 
@@ -73,7 +73,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     {
         $result = Scripts::findByName('Latin');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Script', $result);
+        $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $result);
         $this->assertEquals('Latn', $result->getAlpha4());
     }
 }

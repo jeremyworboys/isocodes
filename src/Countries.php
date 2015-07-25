@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Countries
+ * PHP ISO Codes
  * Copyright (C) 2015 Jeremy Worboys <jw@jeremyworboys.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * USA
  */
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 /**
  * Countries
@@ -29,7 +29,7 @@ class Countries extends Database
     /**
      * Get all countries keyed by the alpha2 field.
      *
-     * @return \JeremyWorboys\PhpCountries\Country[]
+     * @return \JeremyWorboys\IsoCodes\Country[]
      */
     public static function findAllByAlpha2()
     {
@@ -40,7 +40,7 @@ class Countries extends Database
      * Get a country by its alpha2 field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     public static function findByAlpha2($value)
     {
@@ -50,7 +50,7 @@ class Countries extends Database
     /**
      * Get all countries keyed by the alpha3 field.
      *
-     * @return \JeremyWorboys\PhpCountries\Country[]
+     * @return \JeremyWorboys\IsoCodes\Country[]
      */
     public static function findAllByAlpha3()
     {
@@ -61,7 +61,7 @@ class Countries extends Database
      * Get a country by its alpha3 field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     public static function findByAlpha3($value)
     {
@@ -71,7 +71,7 @@ class Countries extends Database
     /**
      * Get all countries keyed by the numeric field.
      *
-     * @return \JeremyWorboys\PhpCountries\Country[]
+     * @return \JeremyWorboys\IsoCodes\Country[]
      */
     public static function findAllByNumeric()
     {
@@ -82,7 +82,7 @@ class Countries extends Database
      * Get a country by its numeric field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     public static function findByNumeric($value)
     {
@@ -92,7 +92,7 @@ class Countries extends Database
     /**
      * Get all countries keyed by the officialName field.
      *
-     * @return \JeremyWorboys\PhpCountries\Country[]
+     * @return \JeremyWorboys\IsoCodes\Country[]
      */
     public static function findAllByOfficialName()
     {
@@ -103,7 +103,7 @@ class Countries extends Database
      * Get a country by its officialName field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     public static function findByOfficialName($value)
     {
@@ -113,7 +113,7 @@ class Countries extends Database
     /**
      * Get all countries keyed by the commonName field.
      *
-     * @return \JeremyWorboys\PhpCountries\Country[]
+     * @return \JeremyWorboys\IsoCodes\Country[]
      */
     public static function findAllByCommonName()
     {
@@ -124,7 +124,7 @@ class Countries extends Database
      * Get a country by its commonName field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     public static function findByCommonName($value)
     {
@@ -134,7 +134,7 @@ class Countries extends Database
     /**
      * Get all countries keyed by the name field.
      *
-     * @return \JeremyWorboys\PhpCountries\Country[]
+     * @return \JeremyWorboys\IsoCodes\Country[]
      */
     public static function findAllByName()
     {
@@ -145,7 +145,7 @@ class Countries extends Database
      * Get a country by its name field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     public static function findByName($value)
     {
@@ -166,7 +166,7 @@ class Countries extends Database
      * Create a collection entry instance.
      *
      * @param array $fields
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     protected function createChildInstance(array $fields)
     {

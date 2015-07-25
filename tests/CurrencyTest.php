@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class CurrencyTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Currency
+     * @return \JeremyWorboys\IsoCodes\Currency
      */
     protected function getCurrency()
     {

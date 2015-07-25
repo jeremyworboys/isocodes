@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Countries
+ * PHP ISO Codes
  * Copyright (C) 2015 Jeremy Worboys <jw@jeremyworboys.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * USA
  */
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 /**
  * Subdivision
@@ -82,7 +82,7 @@ class Subdivision extends DatabaseEntry
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Subdivision|null
+     * @return \JeremyWorboys\IsoCodes\Subdivision|null
      */
     public function getParent()
     {
@@ -94,7 +94,7 @@ class Subdivision extends DatabaseEntry
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     public function getCountry()
     {

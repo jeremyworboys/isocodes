@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class ScriptTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class ScriptTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Script
+     * @return \JeremyWorboys\IsoCodes\Script
      */
     protected function getScript()
     {

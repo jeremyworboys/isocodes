@@ -1,6 +1,6 @@
 <?php
 
-namespace JeremyWorboys\PhpCountries;
+namespace JeremyWorboys\IsoCodes;
 
 class CountryTest extends \PHPUnit_Framework_TestCase
 {
@@ -53,7 +53,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return \JeremyWorboys\IsoCodes\Country
      */
     protected function getCountry()
     {
