@@ -56,7 +56,7 @@ abstract class Database implements \IteratorAggregate, \Countable
      */
     final public static function sharedInstance()
     {
-        $class = static::class;
+        $class = get_called_class();
         if (!isset(self::$__instanceCache[$class])) {
             self::$__instanceCache[$class] = new $class;
         }
