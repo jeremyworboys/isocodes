@@ -32,14 +32,14 @@ $databases = [
         'entry_tags'  => ['iso_3166_entry'],
         'data_mapper' => 'mapEntryFields',
         'field_map'   => [
-            'alpha2'        => 'alpha_2_code',
-            'alpha3'        => 'alpha_3_code',
-            'numeric'       => 'numeric_code',
-            'official_name' => 'official_name',
-            'common_name'   => 'common_name',
-            'name'          => 'name',
+            'alpha2'       => 'alpha_2_code',
+            'alpha3'       => 'alpha_3_code',
+            'numeric'      => 'numeric_code',
+            'officialName' => 'official_name',
+            'commonName'   => 'common_name',
+            'name'         => 'name',
         ],
-        'index'       => ['alpha2', 'alpha3', 'numeric', 'official_name', 'common_name', 'name'],
+        'index'       => ['alpha2', 'alpha3', 'numeric', 'officialName', 'commonName', 'name'],
     ],
     'historic_countries' => [
         'source'      => $isoCodesDir . '/iso_3166/iso_3166.xml',
@@ -47,18 +47,17 @@ $databases = [
         'entry_tags'  => ['iso_3166_entry', 'iso_3166_3_entry'],
         'data_mapper' => 'mapEntryFields',
         'field_map'   => [
-            'alpha2'         => 'alpha_2_code',
-            'alpha3'         => 'alpha_3_code',
-            'numeric'        => 'numeric_code',
-            'official_name'  => 'official_name',
-            'common_name'    => 'common_name',
-            'alpha4'         => 'alpha_4_code',
-            'date_withdrawn' => 'date_withdrawn',
-            //'name'           => 'name',
-            'name'           => 'names',
-            'comment'        => 'comment',
+            'alpha2'        => 'alpha_2_code',
+            'alpha3'        => 'alpha_3_code',
+            'numeric'       => 'numeric_code',
+            'officialName'  => 'official_name',
+            'commonName'    => 'common_name',
+            'alpha4'        => 'alpha_4_code',
+            'dateWithdrawn' => 'date_withdrawn',
+            'name'          => 'names',
+            'comment'       => 'comment',
         ],
-        'index'       => ['alpha2', 'alpha3', 'numeric', 'official_name', 'common_name', 'alpha4', 'date_withdrawn', 'name', 'comment'],
+        'index'       => ['alpha2', 'alpha3', 'numeric', 'officialName', 'commonName', 'alpha4', 'dateWithdrawn', 'name', 'comment'],
     ],
     'scripts'            => [
         'source'      => $isoCodesDir . '/iso_15924/iso_15924.xml',
@@ -90,18 +89,18 @@ $databases = [
         'entry_tags'  => ['iso_639_3_entry'],
         'data_mapper' => 'mapEntryFields',
         'field_map'   => [
-            'iso639_3_code'  => 'id',
-            'iso639_1_code'  => 'part1_code',
-            'iso639_2T_code' => 'part2_code',
-            'status'         => 'status',
-            'scope'          => 'scope',
-            'type'           => 'type',
-            'inverted_name'  => 'inverted_name',
-            'reference_name' => 'reference_name',
-            'name'           => 'name',
-            'common_name'    => 'common_name',
+            'iso6393Code'   => 'id',
+            'iso6391Code'   => 'part1_code',
+            'iso6392TCode'  => 'part2_code',
+            'status'        => 'status',
+            'scope'         => 'scope',
+            'type'          => 'type',
+            'invertedName'  => 'inverted_name',
+            'referenceName' => 'reference_name',
+            'name'          => 'name',
+            'commonName'    => 'common_name',
         ],
-        'index'       => ['iso639_3_code', 'iso639_1_code', 'iso639_2T_code', 'name'],
+        'index'       => ['iso6393Code', 'iso6391Code', 'iso6392TCode', 'name'],
     ],
     'subdivisions'       => [
         'source'      => $isoCodesDir . '/iso_3166_2/iso_3166_2.xml',
@@ -109,11 +108,11 @@ $databases = [
         'entry_tags'  => ['iso_3166_2_entry'],
         'data_mapper' => 'mapSubdivisionFields',
         'field_map'   => [
-            'code'        => 'code',
-            'name'        => 'name',
-            'parent_code' => 'parent',
+            'code'       => 'code',
+            'name'       => 'name',
+            'parentCode' => 'parent',
         ],
-        'index'       => ['code', 'country_code'],
+        'index'       => ['code', 'countryCode'],
     ],
 ];
 
@@ -203,10 +202,10 @@ function mapSubdivisionFields(SimpleXMLElement $isoCodeElement, array $mappedFie
     $isoCodeElementParent = current($isoCodeElement->xpath('..'));
 
     $mappedFields['type'] = (string) $isoCodeElementParent['type'];
-    $mappedFields['country_code'] = explode('-', $mappedFields['code'])[0];
+    $mappedFields['countryCode'] = explode('-', $mappedFields['code'])[0];
 
-    if (!empty($mappedFields['parent_code'])) {
-        $mappedFields['parent_code'] = sprintf('%s-%s', $mappedFields['country_code'], $mappedFields['parent_code']);
+    if (!empty($mappedFields['parentCode'])) {
+        $mappedFields['parentCode'] = sprintf('%s-%s', $mappedFields['countryCode'], $mappedFields['parentCode']);
     }
 
     return $mappedFields;
