@@ -7,7 +7,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsCountable()
     {
-        $countries = Countries::getSharedInstance();
+        $countries = Countries::sharedInstance();
 
         $this->assertInstanceOf('Countable', $countries);
     }
@@ -15,7 +15,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsTraversable()
     {
-        $countries = Countries::getSharedInstance();
+        $countries = Countries::sharedInstance();
 
         $this->assertInstanceOf('Traversable', $countries);
     }
@@ -23,8 +23,8 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsASingleton()
     {
-        $countries1 = Countries::getSharedInstance();
-        $countries2 = Countries::getSharedInstance();
+        $countries1 = Countries::sharedInstance();
+        $countries2 = Countries::sharedInstance();
 
         $this->assertSame($countries1, $countries2);
     }
@@ -32,7 +32,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsTheRightAmountOfCountries()
     {
-        $countries = Countries::getSharedInstance();
+        $countries = Countries::sharedInstance();
 
         $this->assertCount(249, $countries);
     }
@@ -40,7 +40,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsReturnsCountryInstancesWhenIterated()
     {
-        $countries = Countries::getSharedInstance();
+        $countries = Countries::sharedInstance();
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', iterator_to_array($countries));
     }
@@ -48,7 +48,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAll()
     {
-        $countries = Countries::getSharedInstance();
+        $countries = Countries::sharedInstance();
 
         $results = $countries->findAll();
 
@@ -59,7 +59,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllBy()
     {
-        $countries = Countries::getSharedInstance();
+        $countries = Countries::sharedInstance();
 
         $results = $countries->findAllBy('alpha2');
 
@@ -73,7 +73,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::getSharedInstance()->findAllBy('invalid');
+        Countries::sharedInstance()->findAllBy('invalid');
     }
 
     /** @test */
@@ -81,13 +81,13 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::getSharedInstance()->findAllBy(['index']);
+        Countries::sharedInstance()->findAllBy(['index']);
     }
 
     /** @test */
     public function findBy()
     {
-        $countries = Countries::getSharedInstance();
+        $countries = Countries::sharedInstance();
 
         $result = $countries->findBy('alpha2', 'AU');
 
@@ -100,7 +100,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::getSharedInstance()->findBy('invalid', '');
+        Countries::sharedInstance()->findBy('invalid', '');
     }
 
     /** @test */
@@ -108,7 +108,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::getSharedInstance()->findBy(['index'], '');
+        Countries::sharedInstance()->findBy(['index'], '');
     }
 
     /** @test */
@@ -116,7 +116,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::getSharedInstance()->findBy('alpha2', 'ZZZ');
+        Countries::sharedInstance()->findBy('alpha2', 'ZZZ');
     }
 
     /** @test */

@@ -33,7 +33,7 @@ class Countries extends Database
      */
     public static function findAllByAlpha2()
     {
-        return static::getSharedInstance()->findAllBy('alpha2');
+        return static::sharedInstance()->findAllBy('alpha2');
     }
 
     /**
@@ -44,7 +44,7 @@ class Countries extends Database
      */
     public static function findByAlpha2($value)
     {
-        return static::getSharedInstance()->findBy('alpha2', $value);
+        return static::sharedInstance()->findBy('alpha2', $value);
     }
 
     /**
@@ -54,7 +54,7 @@ class Countries extends Database
      */
     public static function findAllByAlpha3()
     {
-        return static::getSharedInstance()->findAllBy('alpha3');
+        return static::sharedInstance()->findAllBy('alpha3');
     }
 
     /**
@@ -65,7 +65,7 @@ class Countries extends Database
      */
     public static function findByAlpha3($value)
     {
-        return static::getSharedInstance()->findBy('alpha3', $value);
+        return static::sharedInstance()->findBy('alpha3', $value);
     }
 
     /**
@@ -75,7 +75,7 @@ class Countries extends Database
      */
     public static function findAllByNumeric()
     {
-        return static::getSharedInstance()->findAllBy('numeric');
+        return static::sharedInstance()->findAllBy('numeric');
     }
 
     /**
@@ -86,7 +86,7 @@ class Countries extends Database
      */
     public static function findByNumeric($value)
     {
-        return static::getSharedInstance()->findBy('numeric', $value);
+        return static::sharedInstance()->findBy('numeric', $value);
     }
 
     /**
@@ -96,7 +96,7 @@ class Countries extends Database
      */
     public static function findAllByOfficialName()
     {
-        return static::getSharedInstance()->findAllBy('officialName');
+        return static::sharedInstance()->findAllBy('officialName');
     }
 
     /**
@@ -107,7 +107,7 @@ class Countries extends Database
      */
     public static function findByOfficialName($value)
     {
-        return static::getSharedInstance()->findBy('officialName', $value);
+        return static::sharedInstance()->findBy('officialName', $value);
     }
 
     /**
@@ -117,7 +117,7 @@ class Countries extends Database
      */
     public static function findAllByCommonName()
     {
-        return static::getSharedInstance()->findAllBy('commonName');
+        return static::sharedInstance()->findAllBy('commonName');
     }
 
     /**
@@ -128,7 +128,7 @@ class Countries extends Database
      */
     public static function findByCommonName($value)
     {
-        return static::getSharedInstance()->findBy('commonName', $value);
+        return static::sharedInstance()->findBy('commonName', $value);
     }
 
     /**
@@ -138,7 +138,7 @@ class Countries extends Database
      */
     public static function findAllByName()
     {
-        return static::getSharedInstance()->findAllBy('name');
+        return static::sharedInstance()->findAllBy('name');
     }
 
     /**
@@ -149,7 +149,7 @@ class Countries extends Database
      */
     public static function findByName($value)
     {
-        return static::getSharedInstance()->findBy('name', $value);
+        return static::sharedInstance()->findBy('name', $value);
     }
 
     /**
