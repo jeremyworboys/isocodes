@@ -83,4 +83,12 @@ class Country extends DatabaseEntry
     {
         return $this->commonName;
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }
