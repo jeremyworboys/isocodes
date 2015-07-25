@@ -50,7 +50,7 @@ class Subdivisions extends Database
     /**
      * Get all subdivisions keyed by the countryCode field.
      *
-     * @return \JeremyWorboys\PhpCountries\Subdivision[]
+     * @return \JeremyWorboys\PhpCountries\Subdivision[][]
      */
     public static function findAllByCountryCode()
     {
@@ -61,7 +61,7 @@ class Subdivisions extends Database
      * Get a subdivision by its countryCode field.
      *
      * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Subdivision
+     * @return \JeremyWorboys\PhpCountries\Subdivision[]
      */
     public static function findByCountryCode($value)
     {

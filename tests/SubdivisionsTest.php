@@ -37,7 +37,8 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Subdivision', $results['AU']);
+        $this->assertInternalType('array', $results['AU']);
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Subdivision', $results['AU']);
     }
 
     /** @test */
@@ -52,9 +53,10 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByCountryCodeWithValue()
     {
-        $result = Subdivisions::findByCountryCode('AU');
+        $results = Subdivisions::findByCountryCode('AU');
 
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Subdivision', $result);
-        $this->assertEquals('New South Wales', $result->getName());
+        $this->assertInternalType('array', $results);
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Subdivision', $results);
+        $this->assertEquals('New South Wales', $results[0]->getName());
     }
 }
