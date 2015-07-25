@@ -1,0 +1,3 @@
+[submodule "iso-codes"]
+	path = iso-codes
+	url = git://anonscm.debian.org/pkg-isocodes/iso-codes.git
