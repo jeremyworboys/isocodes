@@ -26,7 +26,7 @@ assert(is_dir($databaseDir), 'Data directory exists');
 assert(is_dir($isoCodesDir), 'ISO-codes directory exists');
 
 $databases = [
-    'countries'          => [
+    'countries'    => [
         'source'      => $isoCodesDir . '/iso_3166/iso_3166.xml',
         'destination' => $databaseDir . '/countries.json',
         'entry_tags'  => ['iso_3166_entry'],
@@ -41,25 +41,7 @@ $databases = [
         ],
         'index'       => ['alpha2', 'alpha3', 'numeric', 'officialName', 'commonName', 'name'],
     ],
-    'historic_countries' => [
-        'source'      => $isoCodesDir . '/iso_3166/iso_3166.xml',
-        'destination' => $databaseDir . '/historic_countries.json',
-        'entry_tags'  => ['iso_3166_entry', 'iso_3166_3_entry'],
-        'data_mapper' => 'mapEntryFields',
-        'field_map'   => [
-            'alpha2'        => 'alpha_2_code',
-            'alpha3'        => 'alpha_3_code',
-            'numeric'       => 'numeric_code',
-            'officialName'  => 'official_name',
-            'commonName'    => 'common_name',
-            'alpha4'        => 'alpha_4_code',
-            'dateWithdrawn' => 'date_withdrawn',
-            'name'          => 'names',
-            'comment'       => 'comment',
-        ],
-        'index'       => ['alpha2', 'alpha3', 'numeric', 'officialName', 'commonName', 'alpha4', 'dateWithdrawn', 'name', 'comment'],
-    ],
-    'scripts'            => [
+    'scripts'      => [
         'source'      => $isoCodesDir . '/iso_15924/iso_15924.xml',
         'destination' => $databaseDir . '/scripts.json',
         'entry_tags'  => ['iso_15924_entry'],
@@ -71,7 +53,7 @@ $databases = [
         ],
         'index'       => ['alpha4', 'numeric', 'name'],
     ],
-    'currencies'         => [
+    'currencies'   => [
         'source'      => $isoCodesDir . '/iso_4217/iso_4217.xml',
         'destination' => $databaseDir . '/currencies.json',
         'entry_tags'  => ['iso_4217_entry'],
@@ -83,7 +65,7 @@ $databases = [
         ],
         'index'       => ['letter', 'numeric', 'name'],
     ],
-    'languages'          => [
+    'languages'    => [
         'source'      => $isoCodesDir . '/iso_639_3/iso_639_3.xml',
         'destination' => $databaseDir . '/languages.json',
         'entry_tags'  => ['iso_639_3_entry'],
@@ -102,7 +84,7 @@ $databases = [
         ],
         'index'       => ['iso6393Code', 'iso6391Code', 'iso6392TCode', 'name'],
     ],
-    'subdivisions'       => [
+    'subdivisions' => [
         'source'      => $isoCodesDir . '/iso_3166_2/iso_3166_2.xml',
         'destination' => $databaseDir . '/subdivisions.json',
         'entry_tags'  => ['iso_3166_2_entry'],
