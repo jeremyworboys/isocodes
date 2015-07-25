@@ -122,9 +122,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByAlpha2()
     {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findAllByAlpha2();
+        $results = Countries::findAllByAlpha2();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
@@ -134,9 +132,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByAlpha3()
     {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findAllByAlpha3();
+        $results = Countries::findAllByAlpha3();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('USA', $results);
@@ -146,9 +142,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByNumeric()
     {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findAllByNumeric();
+        $results = Countries::findAllByNumeric();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('076', $results);
@@ -158,9 +152,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByOfficialName()
     {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findAllByOfficialName();
+        $results = Countries::findAllByOfficialName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Federal Republic of Germany', $results);
@@ -170,9 +162,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByCommonName()
     {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findAllByCommonName();
+        $results = Countries::findAllByCommonName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Bolivia', $results);
@@ -182,9 +172,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByName()
     {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findAllByName();
+        $results = Countries::findAllByName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Denmark', $results);
@@ -194,9 +182,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByAlpha2WithValue()
     {
-        $countries = Countries::getSharedInstance();
-
-        $result = $countries->findByAlpha2('AU');
+        $result = Countries::findByAlpha2('AU');
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('Australia', $result->getName());
@@ -205,9 +191,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByAlpha3WithValue()
     {
-        $countries = Countries::getSharedInstance();
-
-        $result = $countries->findByAlpha3('USA');
+        $result = Countries::findByAlpha3('USA');
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('United States', $result->getName());
@@ -216,9 +200,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNumericWithValue()
     {
-        $countries = Countries::getSharedInstance();
-
-        $result = $countries->findByNumeric('076');
+        $result = Countries::findByNumeric('076');
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('Brazil', $result->getName());
@@ -227,9 +209,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByOfficialNameWithValue()
     {
-        $countries = Countries::getSharedInstance();
-
-        $result = $countries->findByOfficialName('Federal Republic of Germany');
+        $result = Countries::findByOfficialName('Federal Republic of Germany');
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('Germany', $result->getName());
@@ -238,9 +218,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByCommonNameWithValue()
     {
-        $countries = Countries::getSharedInstance();
-
-        $result = $countries->findByCommonName('Bolivia');
+        $result = Countries::findByCommonName('Bolivia');
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('Bolivia, Plurinational State of', $result->getName());
@@ -249,9 +227,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNameWithValue()
     {
-        $countries = Countries::getSharedInstance();
-
-        $result = $countries->findByName('Denmark');
+        $result = Countries::findByName('Denmark');
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('Kingdom of Denmark', $result->getOfficialName());
