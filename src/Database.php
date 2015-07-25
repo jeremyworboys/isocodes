@@ -95,13 +95,12 @@ abstract class Database implements \IteratorAggregate, \Countable
     }
 
     /**
-     * Get entries filtered by an index.
+     * Get all entries keyed by an index.
      *
      * @param string $index
-     * @param string $value
      * @return mixed
      */
-    public function findBy($index, $value = null)
+    public function findAllBy($index)
     {
         if (!is_string($index)) {
             throw new \InvalidArgumentException('Index name must be a string.');
@@ -111,15 +110,31 @@ abstract class Database implements \IteratorAggregate, \Countable
             throw new \InvalidArgumentException(sprintf('There is no index named "%s".', $index));
         }
 
-        if (is_null($value)) {
-            return $this->indices[$index];
+        return $this->indices[$index];
+    }
+
+    /**
+     * Get an entry by an index.
+     *
+     * @param string $index
+     * @param string $value
+     * @return mixed
+     */
+    public function findBy($index, $value)
+    {
+        if (!is_string($index)) {
+            throw new \InvalidArgumentException('Index name must be a string.');
         }
 
-        if (isset($this->indices[$index][$value])) {
-            return $this->indices[$index][$value];
+        if (!array_key_exists($index, $this->indices)) {
+            throw new \InvalidArgumentException(sprintf('There is no index named "%s".', $index));
         }
 
-        return null;
+        if (!array_key_exists($value, $this->indices[$index])) {
+            throw new \InvalidArgumentException(sprintf('There is no value "%s" in the index "".', $value, $index));
+        }
+
+        return $this->indices[$index][$value];
     }
 
     /**

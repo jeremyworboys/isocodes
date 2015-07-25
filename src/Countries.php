@@ -27,55 +27,127 @@ namespace JeremyWorboys\PhpCountries;
 class Countries extends Database
 {
     /**
-     * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     * Get all countries keyed by the alpha2 field.
+     *
+     * @return \JeremyWorboys\PhpCountries\Country[]
      */
-    public function findByAlpha2($value = null)
+    public function findAllByAlpha2()
+    {
+        return $this->findAllBy('alpha2');
+    }
+
+    /**
+     * Get a country by its alpha2 field.
+     *
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country
+     */
+    public function findByAlpha2($value)
     {
         return $this->findBy('alpha2', $value);
     }
 
     /**
-     * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     * Get all countries keyed by the alpha3 field.
+     *
+     * @return \JeremyWorboys\PhpCountries\Country[]
      */
-    public function findByAlpha3($value = null)
+    public function findAllByAlpha3()
+    {
+        return $this->findAllBy('alpha3');
+    }
+
+    /**
+     * Get a country by its alpha3 field.
+     *
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country
+     */
+    public function findByAlpha3($value)
     {
         return $this->findBy('alpha3', $value);
     }
 
     /**
-     * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     * Get all countries keyed by the numeric field.
+     *
+     * @return \JeremyWorboys\PhpCountries\Country[]
      */
-    public function findByNumeric($value = null)
+    public function findAllByNumeric()
+    {
+        return $this->findAllBy('numeric');
+    }
+
+    /**
+     * Get a country by its numeric field.
+     *
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country
+     */
+    public function findByNumeric($value)
     {
         return $this->findBy('numeric', $value);
     }
 
     /**
-     * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     * Get all countries keyed by the officialName field.
+     *
+     * @return \JeremyWorboys\PhpCountries\Country[]
      */
-    public function findByOfficialName($value = null)
+    public function findAllByOfficialName()
+    {
+        return $this->findAllBy('officialName');
+    }
+
+    /**
+     * Get a country by its officialName field.
+     *
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country
+     */
+    public function findByOfficialName($value)
     {
         return $this->findBy('officialName', $value);
     }
 
     /**
-     * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     * Get all countries keyed by the commonName field.
+     *
+     * @return \JeremyWorboys\PhpCountries\Country[]
      */
-    public function findByCommonName($value = null)
+    public function findAllByCommonName()
+    {
+        return $this->findAllBy('commonName');
+    }
+
+    /**
+     * Get a country by its commonName field.
+     *
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country
+     */
+    public function findByCommonName($value)
     {
         return $this->findBy('commonName', $value);
     }
 
     /**
-     * @param string $value
-     * @return \JeremyWorboys\PhpCountries\Country|\JeremyWorboys\PhpCountries\Country[]
+     * Get all countries keyed by the name field.
+     *
+     * @return \JeremyWorboys\PhpCountries\Country[]
      */
-    public function findByName($value = null)
+    public function findAllByName()
+    {
+        return $this->findAllBy('name');
+    }
+
+    /**
+     * Get a country by its name field.
+     *
+     * @param string $value
+     * @return \JeremyWorboys\PhpCountries\Country
+     */
+    public function findByName($value)
     {
         return $this->findBy('name', $value);
     }

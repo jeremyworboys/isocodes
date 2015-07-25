@@ -57,11 +57,11 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function findByWithNullValue()
+    public function findAllBy()
     {
         $countries = Countries::getSharedInstance();
 
-        $results = $countries->findBy('alpha2');
+        $results = $countries->findAllBy('alpha2');
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
@@ -69,7 +69,23 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function findByWithValue()
+    public function findAllByWithMissingIndex()
+    {
+        $this->setExpectedException('InvalidArgumentException');
+
+        Countries::getSharedInstance()->findAllBy('invalid');
+    }
+
+    /** @test */
+    public function findAllByWithInvalidIndex()
+    {
+        $this->setExpectedException('InvalidArgumentException');
+
+        Countries::getSharedInstance()->findAllBy(['index']);
+    }
+
+    /** @test */
+    public function findBy()
     {
         $countries = Countries::getSharedInstance();
 
@@ -80,13 +96,11 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function findByWithMissingValue()
+    public function findByWithMissingIndex()
     {
-        $countries = Countries::getSharedInstance();
+        $this->setExpectedException('InvalidArgumentException');
 
-        $result = $countries->findBy('alpha2', 'ZZZ');
-
-        $this->assertNull($result);
+        Countries::getSharedInstance()->findBy('invalid', '');
     }
 
     /** @test */
@@ -94,27 +108,87 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::getSharedInstance()->findBy('invalid');
+        Countries::getSharedInstance()->findBy(['index'], '');
     }
 
     /** @test */
-    public function findByWithInvalidIndexType()
+    public function findByWithMissingValue()
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::getSharedInstance()->findBy(['index' => 'value']);
+        Countries::getSharedInstance()->findBy('alpha2', 'ZZZ');
     }
 
     /** @test */
-    public function findByAlpha2WithNullValue()
+    public function findAllByAlpha2()
     {
         $countries = Countries::getSharedInstance();
 
-        $results = $countries->findByAlpha2();
+        $results = $countries->findAllByAlpha2();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['AU']);
+    }
+
+    /** @test */
+    public function findAllByAlpha3()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $results = $countries->findAllByAlpha3();
+
+        $this->assertInternalType('array', $results);
+        $this->assertArrayHasKey('USA', $results);
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['USA']);
+    }
+
+    /** @test */
+    public function findAllByNumeric()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $results = $countries->findAllByNumeric();
+
+        $this->assertInternalType('array', $results);
+        $this->assertArrayHasKey('076', $results);
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['076']);
+    }
+
+    /** @test */
+    public function findAllByOfficialName()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $results = $countries->findAllByOfficialName();
+
+        $this->assertInternalType('array', $results);
+        $this->assertArrayHasKey('Federal Republic of Germany', $results);
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Federal Republic of Germany']);
+    }
+
+    /** @test */
+    public function findAllByCommonName()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $results = $countries->findAllByCommonName();
+
+        $this->assertInternalType('array', $results);
+        $this->assertArrayHasKey('Bolivia', $results);
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Bolivia']);
+    }
+
+    /** @test */
+    public function findAllByName()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $results = $countries->findAllByName();
+
+        $this->assertInternalType('array', $results);
+        $this->assertArrayHasKey('Denmark', $results);
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Denmark']);
     }
 
     /** @test */
@@ -129,18 +203,6 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function findByAlpha3WithNullValue()
-    {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findByAlpha3();
-
-        $this->assertInternalType('array', $results);
-        $this->assertArrayHasKey('USA', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['USA']);
-    }
-
-    /** @test */
     public function findByAlpha3WithValue()
     {
         $countries = Countries::getSharedInstance();
@@ -149,18 +211,6 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('United States', $result->getName());
-    }
-
-    /** @test */
-    public function findByNumericWithNullValue()
-    {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findByNumeric();
-
-        $this->assertInternalType('array', $results);
-        $this->assertArrayHasKey('076', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['076']);
     }
 
     /** @test */
@@ -175,18 +225,6 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function findByOfficialNameWithNullValue()
-    {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findByOfficialName();
-
-        $this->assertInternalType('array', $results);
-        $this->assertArrayHasKey('Federal Republic of Germany', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Federal Republic of Germany']);
-    }
-
-    /** @test */
     public function findByOfficialNameWithValue()
     {
         $countries = Countries::getSharedInstance();
@@ -198,18 +236,6 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function findByCommonNameWithNullValue()
-    {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findByCommonName();
-
-        $this->assertInternalType('array', $results);
-        $this->assertArrayHasKey('Bolivia', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Bolivia']);
-    }
-
-    /** @test */
     public function findByCommonNameWithValue()
     {
         $countries = Countries::getSharedInstance();
@@ -218,18 +244,6 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
         $this->assertEquals('Bolivia, Plurinational State of', $result->getName());
-    }
-
-    /** @test */
-    public function findByNameWithNullValue()
-    {
-        $countries = Countries::getSharedInstance();
-
-        $results = $countries->findByName();
-
-        $this->assertInternalType('array', $results);
-        $this->assertArrayHasKey('Denmark', $results);
-        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['Denmark']);
     }
 
     /** @test */
