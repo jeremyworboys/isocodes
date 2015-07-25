@@ -131,7 +131,7 @@ abstract class Database implements \IteratorAggregate, \Countable
         }
 
         if (!array_key_exists($value, $this->indices[$index])) {
-            throw new \InvalidArgumentException(sprintf('There is no value "%s" in the index "".', $value, $index));
+            throw new \InvalidArgumentException(sprintf('There is no value "%s" in the index named "%s".', $value, $index));
         }
 
         return $this->indices[$index][$value];
