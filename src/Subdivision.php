@@ -87,7 +87,7 @@ class Subdivision extends DatabaseEntry
     public function getParent()
     {
         if ($this->parentCode) {
-            return Subdivisions::findByCode($this->parentCode);
+            return IsoCodes::subdivisions()->findByCode($this->parentCode);
         }
 
         return null;
@@ -98,6 +98,6 @@ class Subdivision extends DatabaseEntry
      */
     public function getCountry()
     {
-        return Countries::findByAlpha2($this->countryCode);
+        return IsoCodes::countries()->findByAlpha2($this->countryCode);
     }
 }

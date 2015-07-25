@@ -31,9 +31,9 @@ class Countries extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Country[]
      */
-    public static function findAllByAlpha2()
+    public function findAllByAlpha2()
     {
-        return static::sharedInstance()->findAllBy('alpha2');
+        return $this->findAllBy('alpha2');
     }
 
     /**
@@ -42,9 +42,9 @@ class Countries extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Country
      */
-    public static function findByAlpha2($value)
+    public function findByAlpha2($value)
     {
-        return static::sharedInstance()->findBy('alpha2', $value);
+        return $this->findBy('alpha2', $value);
     }
 
     /**
@@ -52,9 +52,9 @@ class Countries extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Country[]
      */
-    public static function findAllByAlpha3()
+    public function findAllByAlpha3()
     {
-        return static::sharedInstance()->findAllBy('alpha3');
+        return $this->findAllBy('alpha3');
     }
 
     /**
@@ -63,9 +63,9 @@ class Countries extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Country
      */
-    public static function findByAlpha3($value)
+    public function findByAlpha3($value)
     {
-        return static::sharedInstance()->findBy('alpha3', $value);
+        return $this->findBy('alpha3', $value);
     }
 
     /**
@@ -73,9 +73,9 @@ class Countries extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Country[]
      */
-    public static function findAllByNumeric()
+    public function findAllByNumeric()
     {
-        return static::sharedInstance()->findAllBy('numeric');
+        return $this->findAllBy('numeric');
     }
 
     /**
@@ -84,9 +84,9 @@ class Countries extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Country
      */
-    public static function findByNumeric($value)
+    public function findByNumeric($value)
     {
-        return static::sharedInstance()->findBy('numeric', $value);
+        return $this->findBy('numeric', $value);
     }
 
     /**
@@ -94,9 +94,9 @@ class Countries extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Country[]
      */
-    public static function findAllByOfficialName()
+    public function findAllByOfficialName()
     {
-        return static::sharedInstance()->findAllBy('officialName');
+        return $this->findAllBy('officialName');
     }
 
     /**
@@ -105,9 +105,9 @@ class Countries extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Country
      */
-    public static function findByOfficialName($value)
+    public function findByOfficialName($value)
     {
-        return static::sharedInstance()->findBy('officialName', $value);
+        return $this->findBy('officialName', $value);
     }
 
     /**
@@ -115,9 +115,9 @@ class Countries extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Country[]
      */
-    public static function findAllByCommonName()
+    public function findAllByCommonName()
     {
-        return static::sharedInstance()->findAllBy('commonName');
+        return $this->findAllBy('commonName');
     }
 
     /**
@@ -126,9 +126,9 @@ class Countries extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Country
      */
-    public static function findByCommonName($value)
+    public function findByCommonName($value)
     {
-        return static::sharedInstance()->findBy('commonName', $value);
+        return $this->findBy('commonName', $value);
     }
 
     /**
@@ -136,9 +136,9 @@ class Countries extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Country[]
      */
-    public static function findAllByName()
+    public function findAllByName()
     {
-        return static::sharedInstance()->findAllBy('name');
+        return $this->findAllBy('name');
     }
 
     /**
@@ -147,9 +147,9 @@ class Countries extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Country
      */
-    public static function findByName($value)
+    public function findByName($value)
     {
-        return static::sharedInstance()->findBy('name', $value);
+        return $this->findBy('name', $value);
     }
 
     /**

@@ -31,9 +31,9 @@ class Scripts extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Script[]
      */
-    public static function findAllByAlpha4()
+    public function findAllByAlpha4()
     {
-        return static::sharedInstance()->findAllBy('alpha4');
+        return $this->findAllBy('alpha4');
     }
 
     /**
@@ -42,9 +42,9 @@ class Scripts extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Script
      */
-    public static function findByAlpha4($value)
+    public function findByAlpha4($value)
     {
-        return static::sharedInstance()->findBy('alpha4', $value);
+        return $this->findBy('alpha4', $value);
     }
 
     /**
@@ -52,9 +52,9 @@ class Scripts extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Script[]
      */
-    public static function findAllByNumeric()
+    public function findAllByNumeric()
     {
-        return static::sharedInstance()->findAllBy('numeric');
+        return $this->findAllBy('numeric');
     }
 
     /**
@@ -63,9 +63,9 @@ class Scripts extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Script
      */
-    public static function findByNumeric($value)
+    public function findByNumeric($value)
     {
-        return static::sharedInstance()->findBy('numeric', $value);
+        return $this->findBy('numeric', $value);
     }
 
     /**
@@ -73,9 +73,9 @@ class Scripts extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Script[]
      */
-    public static function findAllByName()
+    public function findAllByName()
     {
-        return static::sharedInstance()->findAllBy('name');
+        return $this->findAllBy('name');
     }
 
     /**
@@ -84,9 +84,9 @@ class Scripts extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Script
      */
-    public static function findByName($value)
+    public function findByName($value)
     {
-        return static::sharedInstance()->findBy('name', $value);
+        return $this->findBy('name', $value);
     }
 
     /**

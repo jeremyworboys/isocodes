@@ -31,9 +31,9 @@ class Subdivisions extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Subdivision[]
      */
-    public static function findAllByCode()
+    public function findAllByCode()
     {
-        return static::sharedInstance()->findAllBy('code');
+        return $this->findAllBy('code');
     }
 
     /**
@@ -42,9 +42,9 @@ class Subdivisions extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Subdivision
      */
-    public static function findByCode($value)
+    public function findByCode($value)
     {
-        return static::sharedInstance()->findBy('code', $value);
+        return $this->findBy('code', $value);
     }
 
     /**
@@ -52,9 +52,9 @@ class Subdivisions extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Subdivision[][]
      */
-    public static function findAllByCountryCode()
+    public function findAllByCountryCode()
     {
-        return static::sharedInstance()->findAllBy('countryCode');
+        return $this->findAllBy('countryCode');
     }
 
     /**
@@ -63,9 +63,9 @@ class Subdivisions extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Subdivision[]
      */
-    public static function findByCountryCode($value)
+    public function findByCountryCode($value)
     {
-        return static::sharedInstance()->findBy('countryCode', $value);
+        return $this->findBy('countryCode', $value);
     }
 
     /**

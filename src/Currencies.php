@@ -31,9 +31,9 @@ class Currencies extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Currency[]
      */
-    public static function findAllByLetter()
+    public function findAllByLetter()
     {
-        return static::sharedInstance()->findAllBy('letter');
+        return $this->findAllBy('letter');
     }
 
     /**
@@ -42,9 +42,9 @@ class Currencies extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Currency
      */
-    public static function findByLetter($value)
+    public function findByLetter($value)
     {
-        return static::sharedInstance()->findBy('letter', $value);
+        return $this->findBy('letter', $value);
     }
 
     /**
@@ -52,9 +52,9 @@ class Currencies extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Currency[]
      */
-    public static function findAllByNumeric()
+    public function findAllByNumeric()
     {
-        return static::sharedInstance()->findAllBy('numeric');
+        return $this->findAllBy('numeric');
     }
 
     /**
@@ -63,9 +63,9 @@ class Currencies extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Currency
      */
-    public static function findByNumeric($value)
+    public function findByNumeric($value)
     {
-        return static::sharedInstance()->findBy('numeric', $value);
+        return $this->findBy('numeric', $value);
     }
 
     /**
@@ -73,9 +73,9 @@ class Currencies extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Currency[]
      */
-    public static function findAllByName()
+    public function findAllByName()
     {
-        return static::sharedInstance()->findAllBy('name');
+        return $this->findAllBy('name');
     }
 
     /**
@@ -84,9 +84,9 @@ class Currencies extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Currency
      */
-    public static function findByName($value)
+    public function findByName($value)
     {
-        return static::sharedInstance()->findBy('name', $value);
+        return $this->findBy('name', $value);
     }
 
     /**

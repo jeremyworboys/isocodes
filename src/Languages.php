@@ -31,9 +31,9 @@ class Languages extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Language[]
      */
-    public static function findAllByIso6393Code()
+    public function findAllByIso6393Code()
     {
-        return static::sharedInstance()->findAllBy('iso6393Code');
+        return $this->findAllBy('iso6393Code');
     }
 
     /**
@@ -42,9 +42,9 @@ class Languages extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Language
      */
-    public static function findByIso6393Code($value)
+    public function findByIso6393Code($value)
     {
-        return static::sharedInstance()->findBy('iso6393Code', $value);
+        return $this->findBy('iso6393Code', $value);
     }
 
     /**
@@ -52,9 +52,9 @@ class Languages extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Language[]
      */
-    public static function findAllByIso6391Code()
+    public function findAllByIso6391Code()
     {
-        return static::sharedInstance()->findAllBy('iso6391Code');
+        return $this->findAllBy('iso6391Code');
     }
 
     /**
@@ -63,9 +63,9 @@ class Languages extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Language
      */
-    public static function findByIso6391Code($value)
+    public function findByIso6391Code($value)
     {
-        return static::sharedInstance()->findBy('iso6391Code', $value);
+        return $this->findBy('iso6391Code', $value);
     }
 
     /**
@@ -73,9 +73,9 @@ class Languages extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Language[]
      */
-    public static function findAllByIso6392TCode()
+    public function findAllByIso6392TCode()
     {
-        return static::sharedInstance()->findAllBy('iso6392TCode');
+        return $this->findAllBy('iso6392TCode');
     }
 
     /**
@@ -84,9 +84,9 @@ class Languages extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Language
      */
-    public static function findByIso6392TCode($value)
+    public function findByIso6392TCode($value)
     {
-        return static::sharedInstance()->findBy('iso6392TCode', $value);
+        return $this->findBy('iso6392TCode', $value);
     }
 
     /**
@@ -94,9 +94,9 @@ class Languages extends Database
      *
      * @return \JeremyWorboys\IsoCodes\Language[]
      */
-    public static function findAllByName()
+    public function findAllByName()
     {
-        return static::sharedInstance()->findAllBy('name');
+        return $this->findAllBy('name');
     }
 
     /**
@@ -105,9 +105,9 @@ class Languages extends Database
      * @param string $value
      * @return \JeremyWorboys\IsoCodes\Language
      */
-    public static function findByName($value)
+    public function findByName($value)
     {
-        return static::sharedInstance()->findBy('name', $value);
+        return $this->findBy('name', $value);
     }
 
     /**

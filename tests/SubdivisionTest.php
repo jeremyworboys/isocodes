@@ -48,7 +48,7 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
     public function getParentWithParent()
     {
         $subdivision = $this->getSubdivision();
-        $parent = Subdivisions::findByCode('AL-01');
+        $parent = IsoCodes::subdivisions()->findByCode('AL-01');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Subdivision', $subdivision->getParent());
         $this->assertSame($parent, $subdivision->getParent());
@@ -66,7 +66,7 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
     public function getCountry()
     {
         $subdivision = $this->getSubdivision();
-        $country = Countries::findByAlpha2('AL');
+        $country = IsoCodes::countries()->findByAlpha2('AL');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $subdivision->getCountry());
         $this->assertSame($country, $subdivision->getCountry());
