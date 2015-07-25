@@ -26,9 +26,14 @@ namespace JeremyWorboys\PhpCountries;
  */
 class Countries extends Database
 {
-    public function __construct()
+    /**
+     * Get the path to the data file for this collection.
+     *
+     * @return string
+     */
+    protected function getDataFilePath()
     {
-        parent::__construct(__DIR__ . '/database/countries.json');
+        return __DIR__ . '/database/countries.json';
     }
 
     /**

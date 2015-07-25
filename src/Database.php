@@ -36,17 +36,32 @@ abstract class Database implements \IteratorAggregate, \Countable
     protected $indices;
 
     /** @var array */
-    private static $__fileCache = [];
+    private static $__instanceCache = [];
 
     /**
-     * @param string $filename
+     * Create a collection instance.
      */
-    public function __construct($filename)
+    final private function __construct()
     {
-        $dataset = self::getDataset($filename);
+        $data = self::getDataFromFile($this->getDataFilePath());
 
-        $this->indices = $dataset['indices'];
-        $this->buildEntries($dataset['entries']);
+        $this->buildEntries($data['entries']);
+        $this->buildIndices($data['indices']);
+    }
+
+    /**
+     * Get a reference to the shared collection instance.
+     *
+     * @return static
+     */
+    final public static function getSharedInstance()
+    {
+        $class = static::class;
+        if (!isset(self::$__instanceCache[$class])) {
+            self::$__instanceCache[$class] = new $class;
+        }
+
+        return self::$__instanceCache[$class];
     }
 
     /**
@@ -70,6 +85,13 @@ abstract class Database implements \IteratorAggregate, \Countable
     }
 
     /**
+     * Get the path to the data file for this collection.
+     *
+     * @return string
+     */
+    abstract protected function getDataFilePath();
+
+    /**
      * Create a collection entry instance.
      *
      * @param array $fields
@@ -78,18 +100,16 @@ abstract class Database implements \IteratorAggregate, \Countable
     abstract protected function createChildInstance(array $fields);
 
     /**
-     * Get the data from the filesystem or cache.
+     * Get the data from the filesystem.
      *
      * @param string $filename
+     * @return array
      */
-    private static function getDataset($filename)
+    private static function getDataFromFile($filename)
     {
-        if (!isset(self::$__fileCache[$filename])) {
-            $contents = file_get_contents($filename);
-            self::$__fileCache[$filename] = json_decode($contents, true);
-        }
+        $contents = file_get_contents($filename);
 
-        return self::$__fileCache[$filename];
+        return json_decode($contents, true);
     }
 
     /**

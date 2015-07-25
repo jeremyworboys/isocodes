@@ -7,7 +7,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsCountable()
     {
-        $countries = new Countries();
+        $countries = Countries::getSharedInstance();
 
         $this->assertInstanceOf('Countable', $countries);
     }
@@ -15,15 +15,24 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsTraversable()
     {
-        $countries = new Countries();
+        $countries = Countries::getSharedInstance();
 
         $this->assertInstanceOf('Traversable', $countries);
     }
 
     /** @test */
+    public function itIsASingleton()
+    {
+        $countries1 = Countries::getSharedInstance();
+        $countries2 = Countries::getSharedInstance();
+
+        $this->assertSame($countries1, $countries2);
+    }
+
+    /** @test */
     public function itContainsTheRightAmountOfCountries()
     {
-        $countries = new Countries();
+        $countries = Countries::getSharedInstance();
 
         $this->assertCount(249, $countries);
     }
@@ -31,7 +40,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsReturnsCountryInstancesWhenIterated()
     {
-        $countries = new Countries();
+        $countries = Countries::getSharedInstance();
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', iterator_to_array($countries));
     }
