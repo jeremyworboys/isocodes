@@ -45,8 +45,8 @@ abstract class Database implements \IteratorAggregate, \Countable
     {
         $dataset = self::getDataset($filename);
 
-        $this->entries = $dataset['entries'];
         $this->indices = $dataset['indices'];
+        $this->buildEntries($dataset['entries']);
     }
 
     /**
@@ -70,6 +70,14 @@ abstract class Database implements \IteratorAggregate, \Countable
     }
 
     /**
+     * Create a collection entry instance.
+     *
+     * @param array $fields
+     * @return \JeremyWorboys\PhpCountries\DatabaseEntry
+     */
+    abstract protected function createChildInstance(array $fields);
+
+    /**
      * Get the data from the filesystem or cache.
      *
      * @param string $filename
@@ -83,4 +91,25 @@ abstract class Database implements \IteratorAggregate, \Countable
 
         return self::$__fileCache[$filename];
     }
+
+    /**
+     * Build the array of entries.
+     *
+     * @param array $entries
+     */
+    private function buildEntries(array $entries)
+    {
+        $this->entries = [];
+
+        foreach ($entries as $fields) {
+            $this->entries[] = $this->createChildInstance($fields);
+        }
+    }
+
+    /**
+     * Build the array of indices.
+     *
+     * @param array $indices
+     */
+    private function buildIndices(array $indices) { }
 }

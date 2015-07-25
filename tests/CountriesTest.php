@@ -27,4 +27,12 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertCount(249, $countries);
     }
+
+    /** @test */
+    public function itContainsReturnsCountryInstancesWhenIterated()
+    {
+        $countries = new Countries();
+
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', iterator_to_array($countries));
+    }
 }

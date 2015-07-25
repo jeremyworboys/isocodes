@@ -22,23 +22,21 @@
 namespace JeremyWorboys\PhpCountries;
 
 /**
- * Countries
+ * Database Entry
+ *
+ * This is the base class for all collection entries.
  */
-class Countries extends Database
+abstract class DatabaseEntry
 {
-    public function __construct()
-    {
-        parent::__construct(__DIR__ . '/database/countries.json');
-    }
-
     /**
-     * Create a collection entry instance.
-     *
      * @param array $fields
-     * @return \JeremyWorboys\PhpCountries\Country
      */
-    protected function createChildInstance(array $fields)
+    public function __construct(array $fields)
     {
-        return new Country($fields);
+        foreach ($fields as $name => $value) {
+            if (property_exists($this, $name)) {
+                $this->{$name} = $value;
+            }
+        }
     }
 }

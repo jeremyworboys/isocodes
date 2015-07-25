@@ -22,23 +22,65 @@
 namespace JeremyWorboys\PhpCountries;
 
 /**
- * Countries
+ * Country
  */
-class Countries extends Database
+class Country extends DatabaseEntry
 {
-    public function __construct()
+    /** @var string */
+    protected $alpha2;
+
+    /** @var string */
+    protected $alpha3;
+
+    /** @var string */
+    protected $numeric;
+
+    /** @var string */
+    protected $officialName;
+
+    /** @var string */
+    protected $commonName;
+
+    /** @var string */
+    protected $name;
+
+    /**
+     * @return string
+     */
+    public function getAlpha2()
     {
-        parent::__construct(__DIR__ . '/database/countries.json');
+        return $this->alpha2;
     }
 
     /**
-     * Create a collection entry instance.
-     *
-     * @param array $fields
-     * @return \JeremyWorboys\PhpCountries\Country
+     * @return string
      */
-    protected function createChildInstance(array $fields)
+    public function getAlpha3()
     {
-        return new Country($fields);
+        return $this->alpha3;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumeric()
+    {
+        return $this->numeric;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOfficialName()
+    {
+        return $this->officialName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommonName()
+    {
+        return $this->commonName;
     }
 }
