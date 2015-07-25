@@ -55,4 +55,53 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $results);
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', $results);
     }
+
+    /** @test */
+    public function findByWithNullValue()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $results = $countries->findBy('alpha2');
+
+        $this->assertInternalType('array', $results);
+        $this->assertArrayHasKey('AU', $results);
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $results['AU']);
+    }
+
+    /** @test */
+    public function findByWithValue()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $result = $countries->findBy('alpha2', 'AU');
+
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $result);
+        $this->assertEquals('Australia', $result->getName());
+    }
+
+    /** @test */
+    public function findByWithMissingValue()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $result = $countries->findBy('alpha2', 'ZZZ');
+
+        $this->assertNull($result);
+    }
+
+    /** @test */
+    public function findByWithInvalidIndex()
+    {
+        $this->setExpectedException('InvalidArgumentException');
+
+        Countries::getSharedInstance()->findBy('invalid');
+    }
+
+    /** @test */
+    public function findByWithInvalidIndexType()
+    {
+        $this->setExpectedException('InvalidArgumentException');
+
+        Countries::getSharedInstance()->findBy(['index' => 'value']);
+    }
 }

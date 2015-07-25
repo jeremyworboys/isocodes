@@ -95,6 +95,34 @@ abstract class Database implements \IteratorAggregate, \Countable
     }
 
     /**
+     * Get entries filtered by an index.
+     *
+     * @param string $index
+     * @param string $value
+     * @return mixed
+     */
+    public function findBy($index, $value = null)
+    {
+        if (!is_string($index)) {
+            throw new \InvalidArgumentException('Index name must be a string.');
+        }
+
+        if (!array_key_exists($index, $this->indices)) {
+            throw new \InvalidArgumentException(sprintf('There is no index named "%s".', $index));
+        }
+
+        if (is_null($value)) {
+            return $this->indices[$index];
+        }
+
+        if (isset($this->indices[$index][$value])) {
+            return $this->indices[$index][$value];
+        }
+
+        return null;
+    }
+
+    /**
      * Get the path to the data file for this collection.
      *
      * @return string
