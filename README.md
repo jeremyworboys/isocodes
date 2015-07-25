@@ -10,25 +10,25 @@
 This package provides collections of various ISO standards (e.g. country, language, language scripts, and currency 
 names) as PHP objects for use in your code. The data is generated from Debian's `pkg-isocodes`.
 
-### [ISO 3166][link-iso-3166]
+#### [ISO 3166 (Countries)][link-iso-3166]
 
 This lists the 2-letter country code and "short" country name. 
 
-### [ISO 639-3][link-iso-639-3]
+#### [ISO 639-3 (Languages)][link-iso-639-3]
 
 This is a further development of ISO 639-2. All codes of ISO 639-2 are included in ISO 639-3. ISO 639-3 attempts to 
 provide as complete an enumeration of languages as possible, including living, extinct, ancient, and constructed 
 languages, whether major or minor, written or unwritten. 
 
-### [ISO 4217][link-iso-4217]
+#### [ISO 4217 (Currencies)][link-iso-4217]
 
 This lists the currency codes and names.
 
-### [ISO 15924][link-iso-15924]
+#### [ISO 15924 (Scripts)][link-iso-15924]
 
 This lists the language scripts names.
 
-### [ISO 3166-2][link-iso-3166-2]
+#### [ISO 3166-2 (Subdivisions)][link-iso-3166-2]
 
 The ISO 3166 standard includes a "Country Subdivision Code", giving a code for the names of the principal administrative
 subdivisions of the countries coded in ISO 3166. 
