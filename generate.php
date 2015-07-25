@@ -39,7 +39,14 @@ $databases = [
             'commonName'   => 'common_name',
             'name'         => 'name',
         ],
-        'index'       => ['alpha2', 'alpha3', 'numeric', 'officialName', 'commonName', 'name'],
+        'index'       => [
+            'alpha2'       => false,
+            'alpha3'       => false,
+            'numeric'      => false,
+            'officialName' => false,
+            'commonName'   => false,
+            'name'         => false,
+        ],
     ],
     'scripts'      => [
         'source'      => $isoCodesDir . '/iso_15924/iso_15924.xml',
@@ -51,7 +58,11 @@ $databases = [
             'numeric' => 'numeric_code',
             'name'    => 'name',
         ],
-        'index'       => ['alpha4', 'numeric', 'name'],
+        'index'       => [
+            'alpha4'  => false,
+            'numeric' => false,
+            'name'    => false,
+        ],
     ],
     'currencies'   => [
         'source'      => $isoCodesDir . '/iso_4217/iso_4217.xml',
@@ -63,7 +74,11 @@ $databases = [
             'numeric' => 'numeric_code',
             'name'    => 'currency_name',
         ],
-        'index'       => ['letter', 'numeric', 'name'],
+        'index'       => [
+            'letter'  => false,
+            'numeric' => false,
+            'name'    => false,
+        ],
     ],
     'languages'    => [
         'source'      => $isoCodesDir . '/iso_639_3/iso_639_3.xml',
@@ -82,7 +97,12 @@ $databases = [
             'name'          => 'name',
             'commonName'    => 'common_name',
         ],
-        'index'       => ['iso6393Code', 'iso6391Code', 'iso6392TCode', 'name'],
+        'index'       => [
+            'iso6393Code'  => false,
+            'iso6391Code'  => false,
+            'iso6392TCode' => false,
+            'name'         => false,
+        ],
     ],
     'subdivisions' => [
         'source'      => $isoCodesDir . '/iso_3166_2/iso_3166_2.xml',
@@ -94,7 +114,10 @@ $databases = [
             'name'       => 'name',
             'parentCode' => 'parent',
         ],
-        'index'       => ['code', 'countryCode'],
+        'index'       => [
+            'code'        => false,
+            'countryCode' => true,
+        ],
     ],
 ];
 
@@ -103,8 +126,10 @@ $databases = [
  */
 foreach ($databases as $dataType => $mapping) {
     $isoData = simplexml_load_file($mapping['source']);
+
     $located = locateElements($isoData, $mapping['entry_tags']);
     $entries = generateEntries($located, $mapping['data_mapper'], $mapping['field_map']);
+
     $indices = generateIndices($dataType, $entries, $mapping['index']);
 
     file_put_contents($mapping['destination'], json_encode(compact('entries', 'indices')));
@@ -194,6 +219,25 @@ function mapSubdivisionFields(SimpleXMLElement $isoCodeElement, array $mappedFie
 }
 
 /**
+ * Merge single and multiple indexes where array value indicates if it is multiple.
+ *
+ * @param array $indexes
+ * @param array $multiIndexes
+ * @return mixed
+ */
+function mergeIndexes(array $indexes, array $multiIndexes)
+{
+    $merged = [];
+    foreach ($indexes as $index) {
+        $merged[$index] = false;
+    }
+    foreach ($multiIndexes as $index) {
+        $merged[$index] = true;
+    }
+    return $merged;
+}
+
+/**
  * Generate indices for the data set.
  *
  * @param string $dataType
@@ -205,7 +249,7 @@ function generateIndices($dataType, array $entries, array $indexes)
 {
     $indices = [];
     foreach ($entries as $position => $entry) {
-        foreach ($indexes as $index) {
+        foreach ($indexes as $index => $isMultiple) {
             $value = $entry[$index];
             if (empty($value)) {
                 continue;
@@ -216,7 +260,11 @@ function generateIndices($dataType, array $entries, array $indexes)
             if (in_array($value, $indices[$index], true)) {
                 indexCollision($dataType, $value, $index);
             }
-            $indices[$index][$value] = $position;
+            if ($isMultiple) {
+                $indices[$index][$value][] = $position;
+            } else {
+                $indices[$index][$value] = $position;
+            }
         }
     }
     return $indices;
