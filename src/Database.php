@@ -190,8 +190,15 @@ abstract class Database implements \IteratorAggregate, \Countable
 
         foreach ($indices as $index => $entries) {
             $this->indices[$index] = [];
-            foreach ($entries as $value => $position) {
-                $this->indices[$index][$value] = $this->entries[$position];
+            foreach ($entries as $value => $positions) {
+                if (is_array($positions)) {
+                    $this->indices[$index][$value] = [];
+                    foreach ($positions as $position) {
+                        $this->indices[$index][$value][] = $this->entries[$position];
+                    }
+                } else {
+                    $this->indices[$index][$value] = $this->entries[$positions];
+                }
             }
         }
     }
