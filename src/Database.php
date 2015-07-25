@@ -188,18 +188,51 @@ abstract class Database implements \IteratorAggregate, \Countable
     {
         $this->indices = [];
 
-        foreach ($indices as $index => $entries) {
-            $this->indices[$index] = [];
-            foreach ($entries as $value => $positions) {
-                if (is_array($positions)) {
-                    $this->indices[$index][$value] = [];
-                    foreach ($positions as $position) {
-                        $this->indices[$index][$value][] = $this->entries[$position];
-                    }
-                } else {
-                    $this->indices[$index][$value] = $this->entries[$positions];
-                }
+        foreach ($indices as $indexKey => $entries) {
+            $this->indices[$indexKey] = $this->buildIndex($entries);
+        }
+    }
+
+    /**
+     * @param array $entries
+     * @return array
+     */
+    private function buildIndex(array $entries)
+    {
+        $index = [];
+        foreach ($entries as $value => $positions) {
+            if (is_array($positions)) {
+                $index[$value] = $this->buildMultiEntryIndex($positions);
+            } else {
+                $index[$value] = $this->buildSingleEntryIndex($positions);
             }
         }
+        return $index;
+    }
+
+    /**
+     * Build the content for a single-entry index.
+     *
+     * @param int $position
+     * @return object
+     */
+    private function buildSingleEntryIndex($position)
+    {
+        return $this->entries[$position];
+    }
+
+    /**
+     * Build the content for a multi-entry index.
+     *
+     * @param array $positions
+     * @return array
+     */
+    private function buildMultiEntryIndex(array $positions)
+    {
+        $index = [];
+        foreach ($positions as $position) {
+            $index[] = $this->entries[$position];
+        }
+        return $index;
     }
 }
