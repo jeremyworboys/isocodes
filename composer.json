@@ -1,7 +1,7 @@
 {
     "name": "jeremyworboys/isocodes",
     "version": "1.0.0",
-    "description": "Makes ISO databases from Debians pkg-isocodes available to PHP.",
+    "description": "This package provides collections of various ISO standards (e.g. country, language, language scripts, and currency names) as PHP objects for use in your code.",
     "keywords": [
         "country", "countries", "subdivision", "subdivisions", "language", "languages", "currency", "currencies",
         "iso 3166", "iso 639", "iso 4217", "iso 15924", "iso 3166-2"
