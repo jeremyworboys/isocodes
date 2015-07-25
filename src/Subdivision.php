@@ -80,4 +80,16 @@ class Subdivision extends DatabaseEntry
     {
         return $this->countryCode;
     }
+
+    /**
+     * @return \JeremyWorboys\PhpCountries\Subdivision|null
+     */
+    public function getParent()
+    {
+        if ($this->parentCode) {
+            return Subdivisions::findByCode($this->parentCode);
+        }
+
+        return null;
+    }
 }

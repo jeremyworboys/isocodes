@@ -44,6 +44,23 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('AL', $subdivision->getCountryCode());
     }
 
+    /** @test */
+    public function getParentWithParent()
+    {
+        $subdivision = $this->getSubdivision();
+        $parent = Subdivisions::findByCode('AL-01');
+
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Subdivision', $subdivision->getParent());
+        $this->assertSame($parent, $subdivision->getParent());
+    }
+
+    /** @test */
+    public function getParentWithoutParent()
+    {
+        $subdivision = $this->getSubdivisionWithoutParent();
+
+        $this->assertNull($subdivision->getParent());
+    }
     /**
      * @return \JeremyWorboys\PhpCountries\Subdivision
      */
@@ -55,6 +72,20 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
             'parentCode'  => 'AL-01',
             'type'        => 'District',
             'countryCode' => 'AL',
+        ]);
+    }
+
+    /**
+     * @return \JeremyWorboys\PhpCountries\Subdivision
+     */
+    protected function getSubdivisionWithoutParent()
+    {
+        return new Subdivision([
+            'code'        => 'AU-NSW',
+            'name'        => 'New South Wales',
+            'parentCode'  => '',
+            'type'        => 'State',
+            'countryCode' => 'AU',
         ]);
     }
 }
