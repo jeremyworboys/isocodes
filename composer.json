@@ -1,5 +1,6 @@
 {
     "name": "jeremyworboys/phpcountries",
+    "version": "1.0.0",
     "description": "Makes ISO databases from Debians pkg-isocodes available to PHP.",
     "keywords": [],
     "license": "LGPL-2.1",
