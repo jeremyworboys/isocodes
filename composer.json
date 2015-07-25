@@ -1,0 +1,17 @@
+{
+    "name": "jeremyworboys/phpcountries",
+    "description": "Makes ISO databases from Debians pkg-isocodes available to PHP.",
+    "keywords": [],
+    "license": "LGPL-2.1",
+    "authors": [
+        {
+            "name": "Jeremy Worboys",
+            "email": "jw@jeremyworboys.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^4.7"
+    }
+}
