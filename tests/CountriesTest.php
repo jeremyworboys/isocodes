@@ -38,7 +38,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function itContainsReturnsCountryInstancesWhenIterated()
+    public function itContainsOnlyCountryInstancesWhenIterated()
     {
         $countries = Countries::sharedInstance();
 
