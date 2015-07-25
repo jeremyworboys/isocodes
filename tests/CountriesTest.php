@@ -44,4 +44,15 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', iterator_to_array($countries));
     }
+
+    /** @test */
+    public function findAll()
+    {
+        $countries = Countries::getSharedInstance();
+
+        $results = $countries->findAll();
+
+        $this->assertInternalType('array', $results);
+        $this->assertContainsOnlyInstancesOf('JeremyWorboys\PhpCountries\Country', $results);
+    }
 }

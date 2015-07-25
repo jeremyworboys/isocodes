@@ -85,6 +85,16 @@ abstract class Database implements \IteratorAggregate, \Countable
     }
 
     /**
+     * Get all entries in collection.
+     *
+     * @return array
+     */
+    public function findAll()
+    {
+        return iterator_to_array($this);
+    }
+
+    /**
      * Get the path to the data file for this collection.
      *
      * @return string
