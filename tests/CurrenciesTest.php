@@ -7,7 +7,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsTheRightAmountOfCurrencies()
     {
-        $currencies = Currencies::sharedInstance();
+        $currencies = IsoCodes::currencies();
 
         $this->assertCount(182, $currencies);
     }
@@ -15,7 +15,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsOnlyCurrencyInstancesWhenIterated()
     {
-        $currencies = Currencies::sharedInstance();
+        $currencies = IsoCodes::currencies();
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Currency', iterator_to_array($currencies));
     }
@@ -23,7 +23,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByLetter()
     {
-        $results = Currencies::findAllByLetter();
+        $results = IsoCodes::currencies()->findAllByLetter();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AUD', $results);
@@ -33,7 +33,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByNumeric()
     {
-        $results = Currencies::findAllByNumeric();
+        $results = IsoCodes::currencies()->findAllByNumeric();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('986', $results);
@@ -43,7 +43,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByName()
     {
-        $results = Currencies::findAllByName();
+        $results = IsoCodes::currencies()->findAllByName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Danish Krone', $results);
@@ -53,7 +53,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByLetterWithValue()
     {
-        $result = Currencies::findByLetter('AUD');
+        $result = IsoCodes::currencies()->findByLetter('AUD');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Currency', $result);
         $this->assertEquals('Australian Dollar', $result->getName());
@@ -62,7 +62,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNumericWithValue()
     {
-        $result = Currencies::findByNumeric('986');
+        $result = IsoCodes::currencies()->findByNumeric('986');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Currency', $result);
         $this->assertEquals('Brazilian Real', $result->getName());
@@ -71,7 +71,7 @@ class CurrenciesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNameWithValue()
     {
-        $result = Currencies::findByName('Danish Krone');
+        $result = IsoCodes::currencies()->findByName('Danish Krone');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Currency', $result);
         $this->assertEquals('DKK', $result->getLetter());

@@ -7,7 +7,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsTheRightAmountOfScripts()
     {
-        $scripts = Scripts::sharedInstance();
+        $scripts = IsoCodes::scripts();
 
         $this->assertCount(169, $scripts);
     }
@@ -15,7 +15,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsOnlyScriptInstancesWhenIterated()
     {
-        $scripts = Scripts::sharedInstance();
+        $scripts = IsoCodes::scripts();
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Script', iterator_to_array($scripts));
     }
@@ -23,7 +23,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByAlpha4()
     {
-        $results = Scripts::findAllByAlpha4();
+        $results = IsoCodes::scripts()->findAllByAlpha4();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Hrkt', $results);
@@ -33,7 +33,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByNumeric()
     {
-        $results = Scripts::findAllByNumeric();
+        $results = IsoCodes::scripts()->findAllByNumeric();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('140', $results);
@@ -43,7 +43,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByName()
     {
-        $results = Scripts::findAllByName();
+        $results = IsoCodes::scripts()->findAllByName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Latin', $results);
@@ -53,7 +53,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByAlpha4WithValue()
     {
-        $result = Scripts::findByAlpha4('Hrkt');
+        $result = IsoCodes::scripts()->findByAlpha4('Hrkt');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $result);
         $this->assertEquals('Japanese syllabaries (alias for Hiragana + Katakana)', $result->getName());
@@ -62,7 +62,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNumericWithValue()
     {
-        $result = Scripts::findByNumeric('140');
+        $result = IsoCodes::scripts()->findByNumeric('140');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $result);
         $this->assertEquals('Mandaic, Mandaean', $result->getName());
@@ -71,7 +71,7 @@ class ScriptsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNameWithValue()
     {
-        $result = Scripts::findByName('Latin');
+        $result = IsoCodes::scripts()->findByName('Latin');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Script', $result);
         $this->assertEquals('Latn', $result->getAlpha4());

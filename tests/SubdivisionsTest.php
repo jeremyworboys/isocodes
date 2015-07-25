@@ -7,7 +7,7 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsTheRightAmountOfSubdivisions()
     {
-        $subdivisions = Subdivisions::sharedInstance();
+        $subdivisions = IsoCodes::subdivisions();
 
         $this->assertCount(4847, $subdivisions);
     }
@@ -15,7 +15,7 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsOnlySubdivisionInstancesWhenIterated()
     {
-        $subdivisions = Subdivisions::sharedInstance();
+        $subdivisions = IsoCodes::subdivisions();
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Subdivision', iterator_to_array($subdivisions));
     }
@@ -23,7 +23,7 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByCode()
     {
-        $results = Subdivisions::findAllByCode();
+        $results = IsoCodes::subdivisions()->findAllByCode();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('US-KY', $results);
@@ -33,7 +33,7 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByCountryCode()
     {
-        $results = Subdivisions::findAllByCountryCode();
+        $results = IsoCodes::subdivisions()->findAllByCountryCode();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
@@ -44,7 +44,7 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByCodeWithValue()
     {
-        $result = Subdivisions::findByCode('US-KY');
+        $result = IsoCodes::subdivisions()->findByCode('US-KY');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Subdivision', $result);
         $this->assertEquals('Kentucky', $result->getName());
@@ -53,7 +53,7 @@ class SubdivisionsTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByCountryCodeWithValue()
     {
-        $results = Subdivisions::findByCountryCode('AU');
+        $results = IsoCodes::subdivisions()->findByCountryCode('AU');
 
         $this->assertInternalType('array', $results);
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Subdivision', $results);

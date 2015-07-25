@@ -7,7 +7,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsCountable()
     {
-        $countries = Countries::sharedInstance();
+        $countries = IsoCodes::countries();
 
         $this->assertInstanceOf('Countable', $countries);
     }
@@ -15,7 +15,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsTraversable()
     {
-        $countries = Countries::sharedInstance();
+        $countries = IsoCodes::countries();
 
         $this->assertInstanceOf('Traversable', $countries);
     }
@@ -23,8 +23,8 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itIsASingleton()
     {
-        $countries1 = Countries::sharedInstance();
-        $countries2 = Countries::sharedInstance();
+        $countries1 = IsoCodes::countries();
+        $countries2 = IsoCodes::countries();
 
         $this->assertSame($countries1, $countries2);
     }
@@ -32,7 +32,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsTheRightAmountOfCountries()
     {
-        $countries = Countries::sharedInstance();
+        $countries = IsoCodes::countries();
 
         $this->assertCount(249, $countries);
     }
@@ -40,7 +40,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsOnlyCountryInstancesWhenIterated()
     {
-        $countries = Countries::sharedInstance();
+        $countries = IsoCodes::countries();
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Country', iterator_to_array($countries));
     }
@@ -48,7 +48,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAll()
     {
-        $countries = Countries::sharedInstance();
+        $countries = IsoCodes::countries();
 
         $results = $countries->findAll();
 
@@ -59,7 +59,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllBy()
     {
-        $countries = Countries::sharedInstance();
+        $countries = IsoCodes::countries();
 
         $results = $countries->findAllBy('alpha2');
 
@@ -73,7 +73,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::sharedInstance()->findAllBy('invalid');
+        IsoCodes::countries()->findAllBy('invalid');
     }
 
     /** @test */
@@ -81,13 +81,13 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::sharedInstance()->findAllBy(['index']);
+        IsoCodes::countries()->findAllBy(['index']);
     }
 
     /** @test */
     public function findBy()
     {
-        $countries = Countries::sharedInstance();
+        $countries = IsoCodes::countries();
 
         $result = $countries->findBy('alpha2', 'AU');
 
@@ -100,7 +100,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::sharedInstance()->findBy('invalid', '');
+        IsoCodes::countries()->findBy('invalid', '');
     }
 
     /** @test */
@@ -108,7 +108,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::sharedInstance()->findBy(['index'], '');
+        IsoCodes::countries()->findBy(['index'], '');
     }
 
     /** @test */
@@ -116,13 +116,13 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        Countries::sharedInstance()->findBy('alpha2', 'ZZZ');
+        IsoCodes::countries()->findBy('alpha2', 'ZZZ');
     }
 
     /** @test */
     public function findAllByAlpha2()
     {
-        $results = Countries::findAllByAlpha2();
+        $results = IsoCodes::countries()->findAllByAlpha2();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('AU', $results);
@@ -132,7 +132,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByAlpha3()
     {
-        $results = Countries::findAllByAlpha3();
+        $results = IsoCodes::countries()->findAllByAlpha3();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('USA', $results);
@@ -142,7 +142,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByNumeric()
     {
-        $results = Countries::findAllByNumeric();
+        $results = IsoCodes::countries()->findAllByNumeric();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('076', $results);
@@ -152,7 +152,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByOfficialName()
     {
-        $results = Countries::findAllByOfficialName();
+        $results = IsoCodes::countries()->findAllByOfficialName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Federal Republic of Germany', $results);
@@ -162,7 +162,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByCommonName()
     {
-        $results = Countries::findAllByCommonName();
+        $results = IsoCodes::countries()->findAllByCommonName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Bolivia', $results);
@@ -172,7 +172,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByName()
     {
-        $results = Countries::findAllByName();
+        $results = IsoCodes::countries()->findAllByName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Denmark', $results);
@@ -182,7 +182,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByAlpha2WithValue()
     {
-        $result = Countries::findByAlpha2('AU');
+        $result = IsoCodes::countries()->findByAlpha2('AU');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Australia', $result->getName());
@@ -191,7 +191,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByAlpha3WithValue()
     {
-        $result = Countries::findByAlpha3('USA');
+        $result = IsoCodes::countries()->findByAlpha3('USA');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('United States', $result->getName());
@@ -200,7 +200,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNumericWithValue()
     {
-        $result = Countries::findByNumeric('076');
+        $result = IsoCodes::countries()->findByNumeric('076');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Brazil', $result->getName());
@@ -209,7 +209,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByOfficialNameWithValue()
     {
-        $result = Countries::findByOfficialName('Federal Republic of Germany');
+        $result = IsoCodes::countries()->findByOfficialName('Federal Republic of Germany');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Germany', $result->getName());
@@ -218,7 +218,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByCommonNameWithValue()
     {
-        $result = Countries::findByCommonName('Bolivia');
+        $result = IsoCodes::countries()->findByCommonName('Bolivia');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Bolivia, Plurinational State of', $result->getName());
@@ -227,7 +227,7 @@ class CountriesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNameWithValue()
     {
-        $result = Countries::findByName('Denmark');
+        $result = IsoCodes::countries()->findByName('Denmark');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Country', $result);
         $this->assertEquals('Kingdom of Denmark', $result->getOfficialName());

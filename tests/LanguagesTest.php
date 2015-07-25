@@ -7,7 +7,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsTheRightAmountOfLanguages()
     {
-        $languages = Languages::sharedInstance();
+        $languages = IsoCodes::languages();
 
         $this->assertCount(7874, $languages);
     }
@@ -15,7 +15,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itContainsOnlyLanguageInstancesWhenIterated()
     {
-        $languages = Languages::sharedInstance();
+        $languages = IsoCodes::languages();
 
         $this->assertContainsOnlyInstancesOf('JeremyWorboys\IsoCodes\Language', iterator_to_array($languages));
     }
@@ -23,7 +23,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByIso6393Code()
     {
-        $results = Languages::findAllByIso6393Code();
+        $results = IsoCodes::languages()->findAllByIso6393Code();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('cnx', $results);
@@ -33,7 +33,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByIso6391Code()
     {
-        $results = Languages::findAllByIso6391Code();
+        $results = IsoCodes::languages()->findAllByIso6391Code();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('eo', $results);
@@ -43,7 +43,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByIso6392TCode()
     {
-        $results = Languages::findAllByIso6392TCode();
+        $results = IsoCodes::languages()->findAllByIso6392TCode();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('enm', $results);
@@ -53,7 +53,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findAllByName()
     {
-        $results = Languages::findAllByName();
+        $results = IsoCodes::languages()->findAllByName();
 
         $this->assertInternalType('array', $results);
         $this->assertArrayHasKey('Latin', $results);
@@ -63,7 +63,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByIso6393CodeWithValue()
     {
-        $result = Languages::findByIso6393Code('cnx');
+        $result = IsoCodes::languages()->findByIso6393Code('cnx');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('Cornish, Middle', $result->getName());
@@ -72,7 +72,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByIso6391CodeWithValue()
     {
-        $result = Languages::findByIso6391Code('eo');
+        $result = IsoCodes::languages()->findByIso6391Code('eo');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('Esperanto', $result->getName());
@@ -81,7 +81,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByIso6392TCodeWithValue()
     {
-        $result = Languages::findByIso6392TCode('enm');
+        $result = IsoCodes::languages()->findByIso6392TCode('enm');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('English, Middle (1100-1500)', $result->getName());
@@ -90,7 +90,7 @@ class LanguagesTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function findByNameWithValue()
     {
-        $result = Languages::findByName('Latin');
+        $result = IsoCodes::languages()->findByName('Latin');
 
         $this->assertInstanceOf('JeremyWorboys\IsoCodes\Language', $result);
         $this->assertEquals('lat', $result->getIso6393Code());
