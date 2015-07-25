@@ -141,5 +141,15 @@ abstract class Database implements \IteratorAggregate, \Countable
      *
      * @param array $indices
      */
-    private function buildIndices(array $indices) { }
+    private function buildIndices(array $indices)
+    {
+        $this->indices = [];
+
+        foreach ($indices as $index => $entries) {
+            $this->indices[$index] = [];
+            foreach ($entries as $value => $position) {
+                $this->indices[$index][$value] = $this->entries[$position];
+            }
+        }
+    }
 }
