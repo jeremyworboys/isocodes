@@ -92,4 +92,12 @@ class Subdivision extends DatabaseEntry
 
         return null;
     }
+
+    /**
+     * @return \JeremyWorboys\PhpCountries\Country
+     */
+    public function getCountry()
+    {
+        return Countries::findByAlpha2($this->countryCode);
+    }
 }

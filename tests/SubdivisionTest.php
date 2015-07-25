@@ -61,6 +61,17 @@ class SubdivisionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNull($subdivision->getParent());
     }
+
+    /** @test */
+    public function getCountry()
+    {
+        $subdivision = $this->getSubdivision();
+        $country = Countries::findByAlpha2('AL');
+
+        $this->assertInstanceOf('JeremyWorboys\PhpCountries\Country', $subdivision->getCountry());
+        $this->assertSame($country, $subdivision->getCountry());
+    }
+
     /**
      * @return \JeremyWorboys\PhpCountries\Subdivision
      */
