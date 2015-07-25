@@ -91,7 +91,7 @@ abstract class Database implements \IteratorAggregate, \Countable
      */
     public function findAll()
     {
-        return iterator_to_array($this);
+        return $this->entries;
     }
 
     /**
